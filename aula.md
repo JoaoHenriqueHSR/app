@@ -14,8 +14,22 @@ como um lego, voce ira utilizar peças para criar algoritimo, ou seja, para reso
 -controle de fluxo(if/else)
 -eestrutura de repetição(for, while)
 
-#fases de resolução de um problema
+# fases de resolução de um problema
 
 coletar os dados
 processar os dados(manipular, alterar etc...)
 mostrar os dados
+
+## escopo e variaveis
+variaveis globais e locais
+constantes
+
+## tipos de dados
+
+String (textos): "" '' ``
+Number: 1 1.2
+function
+
+# operadores
+
+operador de atribuição de valor =
