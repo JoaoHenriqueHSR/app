@@ -52,3 +52,7 @@ mostrar os dados
 [x]criar, passar argumento/paramentro:"function(parametro)"
 [x]executar: "function()"
 [x]arrow function/named function:arrow" ()=>{}" named " function funcao(){}"
+
+# estrutura de repetição
+
+[x] while: "while(condição){execute}"
