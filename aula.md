@@ -35,6 +35,7 @@ mostrar os dados
 
 [x]operador de atribuição de valor =
 [x]operador de concatenação +
+[x]operadores de comparação: == != > < >= <= 
 
 # estrutura de dados
 
@@ -60,6 +61,7 @@ mostrar os dados
 # condicionais
 
 [x]switch:"switch(condição){case true: executar break }"
+[x]if else
 
 # modulos em node.js
 

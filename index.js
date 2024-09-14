@@ -1,4 +1,20 @@
-const {select}=require("@inquirer/prompts")
+const {select, input}=require("@inquirer/prompts")
+
+let meta={
+    value:"correr",
+    checked:true
+}
+
+let metas=[meta];
+
+const cadastrarMeta=async()=>{
+    const meta=await input ({ message: "digite a meta:"})
+    if (meta.length==0){
+        console.log("a meta não pode ser vazia.");
+        return 
+    }
+    metas.push({value:meta, checked:false})
+}
 
 const start=async()=>{// async é dado pois não se sabe quanto tempo vai demorar ate obter uma respota na linha 6
     
@@ -22,7 +38,8 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
         });
         switch(opcao){
             case "cadastrar":
-                console.log("vamos cadastrar")
+                await cadastrarMeta()
+                console.log(metas)
                 break
             case "listar":
                 console.log("vamos listar");
