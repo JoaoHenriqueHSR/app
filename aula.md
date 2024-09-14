@@ -56,3 +56,7 @@ mostrar os dados
 # estrutura de repetição
 
 [x] while: "while(condição){execute}"
+
+# condicionais
+
+[x]switch:"switch(condição){case true: executar break }"

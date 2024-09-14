@@ -1,8 +1,17 @@
 const start=()=>{
-    let contador=0;
-    while(contador<10){
-        console.log(contador);
-        contador++;
+    
+    while(true){
+        let opcao="cadastrar";
+        switch(opcao){
+            case "cadastrar":
+                console.log("vamos cadastrar")
+                break
+            case "listar":
+                console.log("vamos listar");
+                break
+            case "sair":
+                return
+        }
     }
 }
 
