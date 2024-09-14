@@ -60,3 +60,12 @@ mostrar os dados
 # condicionais
 
 [x]switch:"switch(condição){case true: executar break }"
+
+# modulos em node.js
+
+[x]impotação de modulos (require, commonJS)
+[x]biblioteca "inquirer" para criar pormpts interativos
+
+# programação assincrona e promises
+
+[x]uso de funçoes (async/await)
