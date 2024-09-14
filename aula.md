@@ -21,15 +21,34 @@ processar os dados(manipular, alterar etc...)
 mostrar os dados
 
 ## escopo e variaveis
-variaveis globais e locais
-constantes
+[x]variaveis globais e locais:global"let variavel=" local"{let variavel=}"
+[x]constantes:"const contante="
+[x]boolean: true/false
 
 ## tipos de dados
 
-String (textos): "" '' ``
-Number: 1 1.2
-function
+[x]String (textos): "" '' ``
+[x]Number: 1 1.2
+
 
 # operadores
 
-operador de atribuição de valor =
+[x]operador de atribuição de valor =
+[x]operador de concatenação +
+
+# estrutura de dados
+
+# arrays
+
+[x]uma lista que contem qualquer tipo de dado: "let array=[]"
+
+# objetos
+
+[x]atributos e metodos/função: objeto"let objeto={}" metodo/função"funcao(){}"
+[x]criação e manipulação de objetos:"alterar o valor de um campo"
+[x]acessos a propriedades de objetos: "objeto.propriedade"
+
+# functions
+[x]criar, passar argumento/paramentro:"function(parametro)"
+[x]executar: "function()"
+[x]arrow function/named function:arrow" ()=>{}" named " function funcao(){}"
