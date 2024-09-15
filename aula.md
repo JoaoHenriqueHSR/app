@@ -36,12 +36,14 @@ mostrar os dados
 [x]operador de atribuição de valor =
 [x]operador de concatenação +
 [x]operadores de comparação: == != > < >= <= 
+[x]spread operetors: ...
 
 # estrutura de dados
 
 # arrays
 
 [x]uma lista que contem qualquer tipo de dado: "let array=[]"
+[x]metodos de arrays: psuh, [find, forEach, filter] HOF (higher order functions)
 
 # objetos
 

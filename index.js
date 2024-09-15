@@ -5,7 +5,7 @@ let meta={
     checked:false
 }
 
-let metas=[meta];
+let metas=[];
 
 const cadastrarMeta=async()=>{
     const meta=await input ({ message: "digite a meta:"})
@@ -38,6 +38,19 @@ const listarMetas=async()=>{
     console.log("meta(s) marcada(s) como concluida(s)")
 }
 
+const metasRealizadas=async()=>{
+    const realizadas=metas.filter((meta)=>{
+        return meta.checked
+    })
+    if( realizadas.length==0){
+        console.log("Não existem metas realizadas");
+        return
+    }
+    await select({
+        message: "Metas realizadas",
+        choices: [...realizadas]
+    })
+}
 const start=async()=>{// async é dado pois não se sabe quanto tempo vai demorar ate obter uma respota na linha 6
     
     while(true){
@@ -53,6 +66,10 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
                     value: "listar"
                 },
                 {
+                    name: "metas realizadas",
+                    value: "realizadas"
+                },
+                {
                     name: "sair",
                     value: "sair"
                 }
@@ -65,6 +82,9 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
                 break
             case "listar":
                 await listarMetas()
+                break
+            case "realizadas":
+                await metasRealizadas()
                 break
             case "sair":
                 console.log(" saindo ↻")
