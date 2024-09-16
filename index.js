@@ -1,5 +1,6 @@
 const {select, input, checkbox}=require("@inquirer/prompts")
 
+let mensagem="Bem vindo ao app de metas";
 let meta={
     value:"correr",
     checked:false
@@ -10,10 +11,11 @@ let metas=[];
 const cadastrarMeta=async()=>{
     const meta=await input ({ message: "digite a meta:"})
     if (meta.length==0){
-        console.log("a meta não pode ser vazia.");
+        mensagem="a meta não pode ser vazia.";
         return 
     }
     metas.push({value:meta, checked:false})
+    mensagem="meta cadastrada com sucesso";
 }
 
 const listarMetas=async()=>{
@@ -28,7 +30,7 @@ const listarMetas=async()=>{
     })
 
     if(respostas.length==0){
-        console.log("nenhuma meta selecionada")
+        mensagem="nenhuma meta selecionada";
         return
     }
 
@@ -38,7 +40,7 @@ const listarMetas=async()=>{
         })
         meta.checked=true
     })
-    console.log("meta(s) marcada(s) como concluida(s)")
+    mensagem="meta(s) marcada(s) como concluida(s)"
 }
 
 const metasRealizadas=async()=>{
@@ -46,7 +48,7 @@ const metasRealizadas=async()=>{
         return meta.checked
     })
     if( realizadas.length==0){
-        console.log("Não existem metas realizadas");
+        mensagem="Não existem metas realizadas";
         return
     }
     await select({
@@ -80,7 +82,7 @@ const deletarMetas=async()=>{
     })
 
     if(itemsDeletar.length==0){
-        console.log("nenhum item para deletar");
+        mensagem="nenhum item para deletar";
         return
     }
     itemsDeletar.forEach((item)=>{
@@ -88,11 +90,21 @@ const deletarMetas=async()=>{
             return meta.value!=item
         })
     })
-    console.log("meta(s) deletada(s) com sucesso!")
+    mensagem="meta(s) deletada(s) com sucesso!";
+}
+
+const mostrarMensagem=()=>{
+    console.clear()  
+    if(mensagem!=""){
+        console.log(mensagem);
+        console.log(" ");
+        mensagem=""
+    } 
 }
 const start=async()=>{// async é dado pois não se sabe quanto tempo vai demorar ate obter uma respota na linha 6
     
     while(true){
+        mostrarMensagem();
         const opcao=await select({// o await seria a espera de uma promessa que o select ira retornar com uma resposta, isso é dado para que o codigo espere ate que o usuario de um respota. Por esse motivo a função start precisa ser assincrona
             message: "menu >",
             choices: [
@@ -125,7 +137,6 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
         switch(opcao){
             case "cadastrar":
                 await cadastrarMeta()
-                console.log(metas)
                 break
             case "listar":
                 await listarMetas()
