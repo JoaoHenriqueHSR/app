@@ -50,7 +50,7 @@ const metasRealizadas=async()=>{
         return
     }
     await select({
-        message: "Metas realizadas",
+        message: "Metas realizadas: "+realizadas.length,
         choices: [...realizadas]
     })
 }
@@ -64,9 +64,31 @@ const metasAbertas=async()=>{
         return
     }
     await select({
-        message:"metas abertas "+ abertas.length,
+        message:"metas abertas: "+ abertas.length,
         choices:[...abertas]
     })
+}
+
+const deletarMetas=async()=>{
+    const metasDesmarcadas=metas.map((meta)=>{
+        return {value: meta.value, checked: false}
+    })
+    const itemsDeletar= await checkbox({
+        message:"selecione um item para deletar",
+        choices: [...metasDesmarcadas],
+        instructions:false
+    })
+
+    if(itemsDeletar.length==0){
+        console.log("nenhum item para deletar");
+        return
+    }
+    itemsDeletar.forEach((item)=>{
+        metas=metas.filter((meta)=>{
+            return meta.value!=item
+        })
+    })
+    console.log("meta(s) deletada(s) com sucesso!")
 }
 const start=async()=>{// async é dado pois não se sabe quanto tempo vai demorar ate obter uma respota na linha 6
     
@@ -91,6 +113,10 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
                     value: "abertas"
                 },
                 {
+                    name: "deltar metas",
+                    value: "deletar"
+                },
+                {
                     name: "sair",
                     value: "sair"
                 }
@@ -107,8 +133,11 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
             case "realizadas":
                 await metasRealizadas()
                 break
-                case "abertas":
+            case "abertas":
                 await metasAbertas()
+                break
+            case "deletar":
+                await deletarMetas()
                 break
             case "sair":
                 console.log(" saindo ↻")
