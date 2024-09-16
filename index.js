@@ -1,12 +1,23 @@
 const {select, input, checkbox}=require("@inquirer/prompts")
+const fs=require("fs").promises
 
 let mensagem="Bem vindo ao app de metas";
-let meta={
-    value:"correr",
-    checked:false
-}
 
 let metas=[];
+
+const carregarMetas=async()=>{
+    try{
+        const dados = await fs.readFile("metas.json", "utf-8");
+        metas = JSON.parse(dados);
+    }
+    catch(erro){
+        metas=[];
+    }
+}
+
+const salvarMetas=async()=>{
+    await fs.writeFile("metas.json", JSON.stringify(metas, null,2))
+}
 
 const cadastrarMeta=async()=>{
     const meta=await input ({ message: "digite a meta:"})
@@ -19,6 +30,10 @@ const cadastrarMeta=async()=>{
 }
 
 const listarMetas=async()=>{
+    if (metas.length==0){
+        mensagem="não exitem metas"
+        return
+    }
     const respostas= await checkbox({
         message:"use as setas para andar de meta, o espaço para marcar e desmarcar, e o enter para finalizar essa etapa",
         choices: [...metas],
@@ -44,6 +59,10 @@ const listarMetas=async()=>{
 }
 
 const metasRealizadas=async()=>{
+    if (metas.length==0){
+        mensagem="não exitem metas"
+        return
+    }
     const realizadas=metas.filter((meta)=>{
         return meta.checked
     })
@@ -58,6 +77,10 @@ const metasRealizadas=async()=>{
 }
 
 const metasAbertas=async()=>{
+    if (metas.length==0){
+        mensagem="não exitem metas"
+        return
+    }
     const abertas=metas.filter((meta)=>{
      return meta.checked!=true
     })
@@ -72,6 +95,10 @@ const metasAbertas=async()=>{
 }
 
 const deletarMetas=async()=>{
+    if (metas.length==0){
+        mensagem="não exitem metas"
+        return
+    }
     const metasDesmarcadas=metas.map((meta)=>{
         return {value: meta.value, checked: false}
     })
@@ -102,9 +129,10 @@ const mostrarMensagem=()=>{
     } 
 }
 const start=async()=>{// async é dado pois não se sabe quanto tempo vai demorar ate obter uma respota na linha 6
-    
+    await carregarMetas();
     while(true){
         mostrarMensagem();
+        await salvarMetas()
         const opcao=await select({// o await seria a espera de uma promessa que o select ira retornar com uma resposta, isso é dado para que o codigo espere ate que o usuario de um respota. Por esse motivo a função start precisa ser assincrona
             message: "menu >",
             choices: [

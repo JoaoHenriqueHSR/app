@@ -69,6 +69,11 @@ mostrar os dados
 
 [x]impotação de modulos (require, commonJS)
 [x]biblioteca "inquirer" para criar pormpts interativos
+[x] FS (file system)
+ # JSON
+ [x] javaScript object notation (.json)
+ [x]JSON.parse(): transforma de JSON para JS
+ [x]JSON.stringify(): transforma de JS para para JSAON
 
 # programação assincrona e promises
 
