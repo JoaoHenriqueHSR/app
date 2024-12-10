@@ -153,7 +153,7 @@ const start=async()=>{// async é dado pois não se sabe quanto tempo vai demora
                     value: "abertas"
                 },
                 {
-                    name: "deltar metas",
+                    name: "deletar metas",
                     value: "deletar"
                 },
                 {
